@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Centros de Formación en Empresa{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Barra superior de título de módulo -->
+    <header class="top-bar">
+        <span>CENTROS DE FORMACIÓN EN EMPRESA</span>
+    </header>
+
+    <!-- Barra de marca institucional -->
+    <div class="brand-bar">
+        <div class="brand-logo">
+            <img src="{{ url_for('static', filename='img/colombia.png') }}"
+                alt="Colombia"
+                class="colombia-logo">
+        </div>
+
+        <div class="ministry-logo">
+            <img src="{{ url_for('static', filename='img/trabajo.png') }}"
+                alt="Ministerio del Trabajo"
+                class="trabajo-logo">
+        </div>
+    </div>
+
+    <!-- Separador -->
+    <div class="sub-bar"></div>
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="page-footer">
+       <img src="{{ url_for('static', filename='img/empresas.png') }}"
+                
+                class="footer-logo">
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

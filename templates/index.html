@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Consulta Centros de Formación en Empresa{% endblock %}
+
+{% block content %}
+
+    <nav class="breadcrumb">
+        CONSULTAS / CENTROS DE FORMACIÓN EN EMPRESA
+    </nav>
+
+    <h1 class="page-title">CONSULTA PERSONAS QUE CURSARON Y APROBARON LOS PROGRAMAS RESPECTIVOS.</h1>
+
+    <section class="info-box">
+        <span class="info-icon" aria-hidden="true">&#128161;</span>
+        <div class="info-text">
+            <p><strong>¡Importante!</strong></p>
+            <p>Ingrese el número de documento de una persona que cursó y aprobó un programa registrado en CENTROS DE ENTRENAMIENTO.</p>
+            <p>El resultado de la consulta le permitirá visualizar y descargar el certificado de trabajadores entrenados en los diferentes Centros de Entrenamiento, avalados por el Ministerio del Trabajo.</p>
+        </div>
+    </section>
+
+    <form class="query-form" action="{{ url_for('consultar') }}" method="POST">
+        <label for="tipo_documento" class="query-label">Ingrese el número y tipo de documento que desea consultar</label>
+
+        <div class="query-row">
+            <select id="tipo_documento" name="tipo_documento" required>
+                {% for valor, etiqueta in tipos_documento %}
+                    <option value="{{ valor }}">{{ etiqueta }}</option>
+                {% endfor %}
+            </select>
+
+            <input
+                type="text"
+                id="numero_documento"
+                name="numero_documento"
+                placeholder="Número de documento"
+                inputmode="numeric"
+                required
+            >
+
+            <button type="submit" class="btn-consultar">Consultar</button>
+        </div>
+    </form>
+
+{% endblock %}

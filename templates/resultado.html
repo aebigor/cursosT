@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Resultado de la consulta{% endblock %}
+
+{% block content %}
+{% if resultado %}
+<section class="resultado-consulta">
+    <h1 class="section-title">RESULTADO CONSULTA :</h1>
+
+    <div class="persona-info">
+        <div class="persona-row">
+            <span class="persona-row-icon persona-row-icon--user" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg>
+            </span>
+            <span>NOMBRE DEL USUARIO: {{ resultado.persona.nombre_completo }}</span>
+        </div>
+        <div class="persona-row">
+            <span class="persona-row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="3"><path d="m9 5 7 7-7 7"/></svg></span>
+            <span>NÚMERO DEL DOCUMENTO DEL USUARIO: {{ resultado.persona.numero_documento }}</span>
+        </div>
+        <div class="persona-row">
+            <span class="persona-row-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="3"><path d="m9 5 7 7-7 7"/></svg></span>
+            <span>TIPO DOCUMENTO DEL USUARIO: {{ resultado.persona.tipo_documento }}</span>
+        </div>
+    </div>
+
+    {% set constancias = resultado.certificados | selectattr('categoria', 'ne', 'formacion_empresa') | list %}
+    {% set formacion = resultado.certificados | selectattr('categoria', 'equalto', 'formacion_empresa') | list %}
+
+    {% if constancias %}
+    <div class="resultado-group resultado-group--constancias">
+        {% for cert in constancias %}
+        <a class="resultado-card resultado-card--{{ 'orange' if loop.index == 2 else 'blue' }}"
+           href="{{ url_for('static', filename='certificados/' ~ cert.archivo) }}" target="_blank" rel="noopener">
+            <span class="resultado-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="29" height="29" fill="none">
+                    <path d="M7 3h12l6 6v19H7V3Z" stroke="currentColor" stroke-width="1.6"/><path d="M19 3v7h6" stroke="currentColor" stroke-width="1.6"/>
+                    <text x="16" y="23" text-anchor="middle" font-size="6.5" font-family="Arial, sans-serif" font-weight="700" fill="currentColor">PDF</text>
+                </svg>
+            </span>
+            <span class="resultado-card-title">CONSTANCIAS</span>
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if resultado.certificados %}
+    <div class="resultado-table-wrap">
+        <table class="resultado-table">
+            <thead>
+                <tr>
+                    <th>PROGRAMA</th>
+                    <th>NIVEL</th>
+                    <th>NUMERO DE<br>DOCUMENTO</th>
+                    <th>FECHA<br>INICIO</th>
+                    <th>FECHA FIN</th>
+                    <th>NOMBRE DE LA<br>ORGANIZACIÓN</th>
+                    <th>NOMBRE DE<br>LA SEDE</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cert in resultado.certificados %}
+                <tr>
+                    <td>{{ cert.programa or cert.titulo or cert.etiqueta }}</td>
+                    <td>{{ cert.nivel or '-' }}</td>
+                    <td>{{ resultado.persona.numero_documento }}</td>
+                    <td>{{ cert.fecha_inicio or '-' }}</td>
+                    <td>{{ cert.fecha_fin or '-' }}</td>
+                    <td>{{ cert.organizacion or '-' }}</td>
+                    <td>{{ cert.sede or '-' }}</td>
+                    <td class="resultado-table-action">
+                        <a href="{{ url_for('static', filename='certificados/' ~ cert.archivo) }}" target="_blank" rel="noopener" class="resultado-download">⇩ GENERAR CONSTANCIA</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    {% if formacion %}
+    <div class="resultado-group resultado-group--formacion">
+        {% for cert in formacion %}
+        <a class="resultado-card resultado-card--red" href="{{ url_for('static', filename='certificados/' ~ cert.archivo) }}" target="_blank" rel="noopener">
+            <span class="resultado-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="29" height="29" fill="none">
+                    <path d="M7 3h12l6 6v19H7V3Z" stroke="currentColor" stroke-width="1.6"/><path d="M19 3v7h6" stroke="currentColor" stroke-width="1.6"/>
+                    <text x="16" y="23" text-anchor="middle" font-size="6.5" font-family="Arial, sans-serif" font-weight="700" fill="currentColor">PDF</text>
+                </svg>
+            </span>
+            <span class="resultado-card-title">CONSTANCIAS FORMACION EN EMPRESA</span>
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>
+{% else %}
+<div class="warning-box">
+    <span class="warning-icon" aria-hidden="true">&#9888;</span>
+    <p class="warning-text"><strong>¡Importante!</strong> No se encontraron resultados para la consulta realizada, si desea realizar una nueva consulta presione Regresar.</p>
+    <a href="{{ url_for('index') }}" class="btn-regresar">REGRESAR</a>
+</div>
+{% endif %}
+{% endblock %}

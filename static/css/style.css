@@ -1,0 +1,532 @@
+:root {
+    /* 🎨 Aquí controlas el color de la barra superior.
+       Para tu propuesta de mejora solo cambias este valor. */
+    --top-bar-color: #6E85B7;
+    --top-bar-text: #FFFFFF;
+
+    --marsala: #7C2440;
+    --marsala-dark: #5E1B30;
+    --text-dark: #1F2937;
+    --text-muted: #4B5563;
+    --link-blue: #1D3E9C;
+    --border-light: #E5E7EB;
+    --info-border: #BFE3E8;
+    --info-bg: #FFFFFF;
+    --bg-page: #FFFFFF;
+    --bg-subbar: #EDEFF3;
+
+    --font-base: "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-base);
+    color: var(--text-dark);
+    background: var(--bg-page);
+}
+
+/* Barra superior con título del módulo */
+.top-bar {
+    background-color: var(--top-bar-color);
+    color: var(--top-bar-text);
+    padding: 14px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Barra de marca institucional */
+.brand-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    background: #FFFFFF;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-mark {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+}
+
+.brand-mark-arc {
+    position: absolute;
+    border-radius: 50%;
+    border: 7px solid var(--marsala);
+}
+.brand-mark-arc--1 { width: 46px; height: 46px; top: 0; left: 0; border-color: var(--marsala); }
+.brand-mark-arc--2 { width: 30px; height: 30px; top: 8px; left: 8px; border-color: #FFFFFF; }
+.brand-mark-arc--3 { width: 14px; height: 14px; top: 16px; left: 16px; background: var(--marsala); border: none; }
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+.brand-text strong {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+}
+.brand-text span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.ministry-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ministry-icon {
+    font-size: 1.6rem;
+    color: var(--marsala);
+}
+.ministry-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--marsala);
+}
+
+.sub-bar {
+    height: 10px;
+    background: var(--bg-subbar);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 32px 48px;
+}
+
+.breadcrumb {
+    color: var(--link-blue);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--marsala);
+    margin-bottom: 20px;
+}
+
+.page-title {
+    color: var(--link-blue);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 0.2px;
+}
+
+.info-box {
+    display: flex;
+    gap: 18px;
+    background: var(--info-bg);
+    border: 1px solid var(--info-border);
+    border-radius: 4px;
+    padding: 22px 26px;
+    margin-bottom: 36px;
+}
+.info-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+.info-text p {
+    margin: 0 0 12px;
+    color: #0F7A8C;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+.info-text p:first-child {
+    color: var(--text-dark);
+}
+.info-text p:last-child {
+    margin-bottom: 0;
+}
+
+.alert {
+    padding: 12px 18px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+.alert-error { background: #FDE8E8; color: #9B1C1C; border: 1px solid #F5B5B5; }
+.alert-warning { background: #FEF6E7; color: #92620A; border: 1px solid #FBDFA0; }
+
+.query-form {
+    border-top: 1px solid var(--border-light);
+    padding-top: 24px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.query-label {
+    display: block;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.query-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.query-row select,
+.query-row input {
+    padding: 10px 12px;
+    border: 1px solid #C7CCD4;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: var(--text-dark);
+}
+
+.query-row select {
+    min-width: 170px;
+}
+
+.query-row input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.btn-consultar,
+.btn-descargar {
+    background: #1D8CA6;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+.btn-consultar:hover,
+.btn-descargar:hover {
+    background: #166F84;
+}
+
+.result-box {
+    margin-top: 32px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 22px 26px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.result-box h2 {
+    font-size: 1rem;
+    color: var(--link-blue);
+    margin-top: 0;
+}
+.result-box dl {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    row-gap: 10px;
+}
+.result-box dt {
+    font-weight: 600;
+    color: var(--text-muted);
+}
+.result-box dd {
+    margin: 0;
+}
+.btn-descargar {
+    margin-top: 16px;
+}
+
+/* ---------- Página de resultado ---------- */
+.resultado-consulta {
+    width: 100%;
+    max-width: 833px;
+    margin: 0 auto;
+    border-top: 1px solid #2E4BB7;
+    padding-top: 16px;
+}
+
+.section-title {
+    color: #111111;
+    font-size: 0.78rem;
+    font-weight: 500;
+    margin: 0 0 24px;
+    letter-spacing: 0;
+}
+
+.persona-info {
+    margin-bottom: 42px;
+}
+
+.persona-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 25px;
+    color: #003B78;
+    font-size: 0.78rem;
+    line-height: 1.25;
+}
+
+.persona-row strong {
+    font-weight: 400;
+}
+
+.persona-row-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #003B78;
+    flex: 0 0 16px;
+}
+
+.persona-row-icon--user {
+    color: #004A88;
+}
+
+.resultado-group {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.resultado-group--constancias {
+    margin-bottom: 15px;
+}
+
+.resultado-card {
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border: 1px solid #E4E4E4;
+    border-left-width: 3px;
+    border-radius: 0;
+    padding: 13px 16px;
+    background: #FFFFFF;
+    text-decoration: none;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.resultado-card:hover {
+    background: #FAFAFA;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.resultado-card--blue {
+    border-left-color: #1687AA;
+    color: #006E91;
+}
+
+.resultado-card--orange {
+    border-left-color: #C77A00;
+    color: #B56500;
+}
+
+.resultado-card--red {
+    border-left-color: #E2383D;
+    color: #D92D32;
+}
+
+.resultado-card-icon {
+    width: 29px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 29px;
+}
+
+.resultado-card-title {
+    font-size: 0.78rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.resultado-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 15px 0 30px;
+}
+
+.resultado-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 0.66rem;
+    color: #172033;
+}
+
+.resultado-table th,
+.resultado-table td {
+    border: 1px solid #D8D8D8;
+    padding: 8px 7px;
+    vertical-align: middle;
+}
+
+.resultado-table th {
+    background: #FAFAFA;
+    color: #16233D;
+    text-align: left;
+    font-size: 0.68rem;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.resultado-table td {
+    background: #FFFFFF;
+    line-height: 1.35;
+    text-transform: uppercase;
+}
+
+.resultado-table th:nth-child(1) { width: 12%; }
+.resultado-table th:nth-child(2) { width: 13%; }
+.resultado-table th:nth-child(3) { width: 14%; }
+.resultado-table th:nth-child(4) { width: 9%; }
+.resultado-table th:nth-child(5) { width: 10%; }
+.resultado-table th:nth-child(6) { width: 16%; }
+.resultado-table th:nth-child(7) { width: 14%; }
+.resultado-table th:nth-child(8) { width: 12%; }
+
+.resultado-table-action {
+    text-align: center;
+}
+
+.resultado-download {
+    display: inline-block;
+    padding: 8px 10px;
+    background: #FFBD00;
+    color: #111111;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.62rem;
+    font-weight: 700;
+    line-height: 1.15;
+    white-space: nowrap;
+}
+
+.resultado-download:hover {
+    background: #ECAE00;
+}
+
+.resultado-group--formacion {
+    margin-top: 0;
+    gap: 22px;
+}
+
+.warning-box {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border: 1px solid var(--info-border);
+    border-radius: 4px;
+    padding: 20px 26px;
+}
+
+.warning-icon {
+    font-size: 2rem;
+    color: var(--marsala);
+    flex-shrink: 0;
+}
+
+.warning-text {
+    flex: 1;
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+.btn-regresar {
+    background: #F5C518;
+    color: #3A2E00;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.3px;
+    padding: 10px 18px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-regresar:hover {
+    background: #E0B300;
+}
+
+.page-footer {
+    border-top: 1px solid var(--border-light);
+    padding: 20px 32px 32px;
+    display: flex;
+    justify-content: flex-end;
+}
+.footer-logo {
+    height: 70px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .brand-bar {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+    .content {
+        padding: 20px 16px 32px;
+    }
+    .query-row {
+        flex-direction: column;
+    }
+    .query-row select,
+    .query-row input,
+    .btn-consultar {
+        width: 100%;
+    }
+    .result-box dl {
+        grid-template-columns: 1fr;
+    }
+}
+
+.brand-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    background: #ffffff;
+}
+
+.brand-logo,
+.ministry-logo {
+    display: flex;
+    align-items: center;
+}
+
+.colombia-logo {
+    width: 228px;
+    height: auto;
+    object-fit: contain;
+}
+
+.trabajo-logo {
+    width: 360px;
+    height: auto;
+    object-fit: contain;
+}
