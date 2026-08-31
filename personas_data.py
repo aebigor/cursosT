@@ -17,12 +17,12 @@ El número de documento se configura en la persona porque identifica al usuario.
 PERSONAS = [
     {
         "tipo_documento": "CC",
-        "numero_documento": "1039421591",
-        "nombre_completo": "JOHN ANDERSON YEPES VELEZ",
+        "numero_documento": "1121835789",
+        "nombre_completo": "JULIAN ALBERTO GUZMAN MORENO",
         "certificados": [
             {
                 "tipo": "primeros_auxilios",
-                "programa": "Curso de Primeros Auxilios",
+                "programa": "ESPACIOS CONFINADOS",
                 "nivel": "BÁSICO",
                 "fecha_inicio": "12/07/2025",
                 "fecha_fin": "15/07/2025",
@@ -31,7 +31,7 @@ PERSONAS = [
             },
             {
                 "tipo": "seguridad_salud_trabajo",
-                "programa": "Curso de Seguridad y Salud en el Trabajo",
+                "programa": "SEGURIDAD Y SALUD EN EL TRABAJO",
                 "nivel": "BÁSICO",
                 "fecha_inicio": "20/07/2025",
                 "fecha_fin": "25/07/2025",
@@ -43,11 +43,11 @@ PERSONAS = [
                 # Ejemplo de curso completamente nuevo: NO existe en el catálogo.
                 "tipo": "TRABAJO_EN_ALTURAS",
                 "programa": "TRABAJO EN ALTURAS",
-                "nivel": "TRABAJADOR AUTORIZADO",
-                "fecha_inicio": "12/07/2025",
-                "fecha_fin": "15/07/2025",
-                "organizacion": "HALCON ALTURAS",
-                "sede": "HALCON ALTURAS",
+                "nivel": "REENTRENAMIENTO SECTORIAL 4272",
+                "fecha_inicio": "23/04/2026",
+                "fecha_fin": "23/04/2026",
+                "organizacion": "CERTITAR",
+                "sede": "CERTITAR S.A.S.",
             },
         ],
     },
